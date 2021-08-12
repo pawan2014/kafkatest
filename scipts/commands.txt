@@ -1,0 +1,7 @@
+bin\windows/zookeeper-server-start.bat config/zookeeper.properties
+bin\windows/kafka-server-start.sh config/server.properties
+
+bin\windows/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic fast-messages
+bin\windows/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic summary-markers
+
+bin\windows/kafka-topics.sh --list --zookeeper localhost:2181
