@@ -1,0 +1,9 @@
+[MY PRONT]: 101, {"transcationId": "101", "shareId": "11STCENMGM", "type": "EQ", "cost": 200, "units": 3}
+[MY PRONT]: 102, {"transcationId": "102", "shareId": "81STCENMGM", "type": "EQ", "cost": 200, "units": 5}
+[MY PRONT]: 104, {"transcationId": "104", "shareId": "71STCENMGM", "type": "EQ", "cost": 200, "units": 2}
+[MY PRONT]: 105, {"transcationId": "105", "shareId": "61STCENMGM", "type": "EQ", "cost": 200, "units": 2}
+[MY PRONT]: 106, {"transcationId": "106", "shareId": "51STCENMGM", "type": "EQ", "cost": 200, "units": 2}
+[MY PRONT]: 107, {"transcationId": "107", "shareId": "41STCENMGM", "type": "EQ", "cost": 200, "units": 2}
+[MY PRONT]: 108, {"transcationId": "108", "shareId": "11STCENMGM", "type": "EQ", "cost": 200, "units": 4}
+
+

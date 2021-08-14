@@ -1,0 +1,5 @@
+transcation id,share id,type, unit,cost
+
+read topic com.pk.shares.source
+group by transcation id,share id,type
+roll up unit,cost

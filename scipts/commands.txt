@@ -1,7 +1,19 @@
-bin\windows/zookeeper-server-start.bat config/zookeeper.properties
-bin\windows/kafka-server-start.sh config/server.properties
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
 
-bin\windows/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic fast-messages
-bin\windows/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic summary-markers
 
-bin\windows/kafka-topics.sh --list --zookeeper localhost:2181
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 2 --partitions 1 --topic com-pk-share-input
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic com-pk-share-output
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic com-pk-share-input
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic summary-markers
+
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+
+
+-- Topic Creation
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic com-pk-share-input
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic com-pk-share-input --from-beginning
+
+bin/kafka-streams-application-reset --application-id my-streams-app --input-topics com-pk-share-input --intermediate-topics com-pk-share-input --bootstrap-servers brokerHost:9092 --zookeeper zookeeperHost:2181
