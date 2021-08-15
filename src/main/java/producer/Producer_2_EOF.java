@@ -47,8 +47,12 @@ public class Producer_2_EOF {
 
             Thread.sleep(3000);
             // Send EOF Record, this should for each partition, in this case single then only one record
-            ProducerRecord<String, ShareInputAvro> record = new ProducerRecord(topicName, "EOF", getEOF());
+            ProducerRecord<String, ShareInputAvro> record = new ProducerRecord(topicName,0, "EOF", getEOF());
             mProducer.send(record);
+
+            ProducerRecord<String, ShareInputAvro> record2 = new ProducerRecord(topicName,1, "EOF", getEOF());
+            mProducer.send(record2);
+
             mProducer.flush();
 
         } catch (IOException e) {

@@ -23,9 +23,11 @@ public class StockAggregratorProcessor extends AbstractProcessor<String, ShareIn
         //System.out.println(shareInputAvro);
         //kvStore.put(shareInputAvro.getShareId().toString(), shareInputAvro);
 
-
+        int partition = context.partition();
         if (s.equalsIgnoreCase("EOF")) {
-            System.out.println("EOF found");
+
+
+            System.out.println("EOF found"+partition);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -36,11 +38,11 @@ public class StockAggregratorProcessor extends AbstractProcessor<String, ShareIn
 
             ShareInputAvro oldValue = kvStore.get(shareInputAvro.getTranscationId().toString());
             if (oldValue != null) {
-                System.out.println("key found");
+                System.out.println("key found"+partition);
                 shareInputAvro.setUnits(oldValue.getUnits() + shareInputAvro.getUnits());
                 kvStore.put(shareInputAvro.getTranscationId().toString(), shareInputAvro);
             } else {
-                System.out.println("put record");
+                System.out.println("put record"+partition);
                 kvStore.put(shareInputAvro.getTranscationId().toString(), shareInputAvro);
             }
 
